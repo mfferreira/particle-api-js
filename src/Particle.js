@@ -3,6 +3,7 @@ import request from 'superagent';
 import prefix from 'superagent-prefix';
 import Defaults from './Defaults';
 import EventStream from './EventStream';
+import Client from './Client';
 
 /**
  * Particle Cloud API wrapper.
@@ -508,6 +509,10 @@ class Particle {
 		} else {
 			req.set({ Authorization: `Bearer ${auth}` });
 		}
+	}
+
+	client(options = {}) {
+		return new Client(Object.assign({ api: this}, options));
 	}
 }
 
